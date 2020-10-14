@@ -23,9 +23,9 @@ class CreateVagasTable extends Migration
             $table->string('tipo');
             $table->longText('descricao');
             $table->boolean('remoto');
-            $table->timestamp('created_at')->useCurrent();
-            $table->timestamp('updated_at')->useCurrent();
-            $table->softDeletes('deleted_at')->useCurrent();
+            $table->timestamp('created_at');
+            $table->timestamp('updated_at');
+            $table->softDeletes('deleted_at');
             $table->unsignedBigInteger('autor_id');
 
             $table->foreign('autor_id')->references('id')->on('autores');
