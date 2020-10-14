@@ -22,10 +22,11 @@ class CreateCandidaturasTable extends Migration
             $table->string('curriculo');
             $table->longText('detalhes');
             $table->text('referencia');
-            $table->timestamps('sent_at');
-            $table->unsignedBigInteger('vaga_id');
+            $table->date('sent_at');
 
-            $table->foreign('vaga_id')->references('id')->on('vagas');
+        });
+        Schema::table('candidaturas', function(Blueprint $table) {
+            $table->foreignId('vaga_id')->constrained('vagas');
         });
     }
 

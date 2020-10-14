@@ -22,13 +22,14 @@ class CreateVagasTable extends Migration
             $table->string('departamento');
             $table->string('tipo');
             $table->longText('descricao');
-            $table->boolean('remoto');
-            $table->timestamp('created_at');
-            $table->timestamp('updated_at');
+            $table->boolean('remoto')->nullable();
+            $table->date('created_at', 0);
+            $table->datetime('updated_at', 0)->nullable();
             $table->softDeletes('deleted_at');
-            $table->unsignedBigInteger('autor_id');
 
-            $table->foreign('autor_id')->references('id')->on('autores');
+        });
+        Schema::table('vagas', function(Blueprint $table) {
+          $table->foreignId('autor_id')->constrained('autores');
         });
     }
 
