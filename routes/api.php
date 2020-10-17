@@ -14,6 +14,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::post('register', 'App\Http\Controllers\PassportAuthController@register');
+Route::post('login', 'App\Http\Controllers\PassportAuthController@login');
+ 
+Route::middleware('auth:api')->group(function () {
+    Route::resource('vagas', 'App\Http\Controllers\VagasController');
 });
