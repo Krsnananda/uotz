@@ -14,15 +14,15 @@ class PassportAuthController extends Controller
     public function register(Request $request)
     {
       $this->validate($request, [
-        'name' => 'required|min:4',
+        'nome' => 'required|min:4',
         'email' => 'required|email',
-        'password' => 'required|min:8',
+        'senha' => 'required|min:8',
       ]);
 
       $user = User::create([
-        'name' => $request->name,
+        'nome' => $request->nome,
         'email' => $request->email,
-        'password' => bcrypt($request->password)
+        'senha' => bcrypt($request->senha)
       ]);
 
       $token = $user->createToken('LaravelAuthApp')->accessToken;
