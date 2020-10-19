@@ -73,9 +73,10 @@ npm install
 ```
 cp .env.example .env
 ```
-_**Obs:** Insira os dados referentes ao seu banco de dados no arquivo .env, após isso gere a chave_
+_**Obs:** Insira os dados referentes ao seu banco de dados no arquivo .env, após isso gere a chave de autenticação_
 
 ```
+php artisan passport:install
 php artisan key:generate
 ```
 
